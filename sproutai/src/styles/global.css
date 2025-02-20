@@ -1,3 +1,21 @@
+:root {
+  --primary-color: #2e7d32;
+  --secondary-color: #4caf50;
+  --background-color: #f8faf8;
+  --text-color: #333;
+  --border-color: #e0e0e0;
+  --radius: 8px;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
 .app-container {
   max-width: 480px;
   margin: 0 auto;
@@ -11,6 +29,7 @@ main {
   flex: 1;
 }
 
+/* Navigation */
 .bottom-nav {
   border-top: 1px solid var(--border-color);
   background-color: white;
@@ -38,6 +57,7 @@ main {
   height: 24px;
 }
 
+/* Home Page */
 .home-container {
   padding: 16px;
 }
@@ -148,6 +168,7 @@ main {
   text-align: center;
 }
 
+/* Garden Page */
 .garden-container {
   padding: 16px;
 }
@@ -208,6 +229,7 @@ main {
   font-size: 18px;
 }
 
+/* Search Page */
 .search-container {
   padding: 16px;
 }
@@ -293,13 +315,4 @@ main {
 
 .more-info-button:hover {
   color: var(--secondary-color);
-}
-
-:root {
-  --primary-color: #2e7d32;
-  --secondary-color: #4caf50;
-  --background-color: #f8faf8;
-  --text-color: #333;
-  --border-color: #e0e0e0;
-  --radius: 8px;
 }
