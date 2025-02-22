@@ -1,13 +1,16 @@
+"use client";
+
 import { PlusCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getPlants } from "../utils/plantStorage";
+import { useEffect, useState } from "react";
 
 export default function Garden() {
-  const plants = [
-    { id: 1, name: "Fern Flower", icon: "🌿" },
-    { id: 2, name: "Aloe Vera", icon: "🎋" },
-    { id: 3, name: "Lavender", icon: "💐" },
-    { id: 4, name: "Cactus", icon: "🌵" },
-  ];
+  const [plants, setPlants] = useState([]);
+
+  useEffect(() => {
+    setPlants(getPlants());
+  }, []);
 
   return (
     <div className="garden-container">
@@ -26,7 +29,25 @@ export default function Garden() {
             className="plant-card"
           >
             <span className="plant-icon">{plant.icon}</span>
-            <span className="plant-name">{plant.name}</span>
+            <div className="plant-info">
+              <span className="plant-name">{plant.name}</span>
+              <span
+                className="plant-status"
+                style={{
+                  color:
+                    plant.health === "excellent"
+                      ? "#2e7d32"
+                      : plant.health === "good"
+                      ? "#1976d2"
+                      : "#ed6c02",
+                }}
+              >
+                {plant.health}
+              </span>
+            </div>
+            <div className="plant-watering">
+              Next water: {new Date(plant.nextWatering).toLocaleDateString()}
+            </div>
           </Link>
         ))}
       </div>
