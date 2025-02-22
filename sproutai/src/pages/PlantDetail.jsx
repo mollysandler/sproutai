@@ -2,7 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Droplet, Sun, Calendar, Edit2, Camera } from "lucide-react";
+import {
+  ArrowLeft,
+  Droplet,
+  Sun,
+  Calendar,
+  Edit2,
+  Camera,
+  X,
+} from "lucide-react";
 import { getPlantById, updatePlant } from "../utils/plantStorage";
 
 export default function PlantDetail() {
@@ -10,6 +18,17 @@ export default function PlantDetail() {
   const navigate = useNavigate();
   const [plant, setPlant] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [editForm, setEditForm] = useState({
+    name: "",
+    type: "",
+    health: "",
+    care: {
+      water: "",
+      light: "",
+      soil: "",
+      temperature: "",
+    },
+  });
 
   useEffect(() => {
     const plantData = getPlantById(id);
@@ -17,6 +36,22 @@ export default function PlantDetail() {
       setPlant(plantData);
     }
   }, [id]);
+
+  useEffect(() => {
+    if (plant) {
+      setEditForm({
+        name: plant.name,
+        type: plant.type || "",
+        health: plant.health,
+        care: {
+          water: plant.care.water,
+          light: plant.care.light,
+          soil: plant.care.soil,
+          temperature: plant.care.temperature,
+        },
+      });
+    }
+  }, [plant]);
 
   const handleWatering = () => {
     const today = new Date().toISOString().split("T")[0];
@@ -39,6 +74,23 @@ export default function PlantDetail() {
 
     if (updatedPlant) {
       setPlant(updatedPlant);
+    }
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    const updatedPlant = updatePlant(Number(id), {
+      ...plant,
+      ...editForm,
+      care: {
+        ...plant.care,
+        ...editForm.care,
+      },
+    });
+
+    if (updatedPlant) {
+      setPlant(updatedPlant);
+      setIsEditing(false);
     }
   };
 
@@ -69,6 +121,105 @@ export default function PlantDetail() {
           <Edit2 size={24} />
         </button>
       </div>
+
+      {isEditing && (
+        <div className="edit-mode">
+          <div className="edit-mode-header">
+            <h2>Edit Plant</h2>
+            <button
+              className="close-button"
+              onClick={() => setIsEditing(false)}
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          <form onSubmit={handleEditSubmit} className="edit-form">
+            <div className="form-row">
+              <label htmlFor="name">Plant Name</label>
+              <input
+                type="text"
+                id="name"
+                value={editForm.name}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, name: e.target.value })
+                }
+                required
+              />
+            </div>
+
+            <div className="form-row">
+              <label htmlFor="type">Plant Type</label>
+              <input
+                type="text"
+                id="type"
+                value={editForm.type}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, type: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="form-row">
+              <label htmlFor="health">Health Status</label>
+              <select
+                id="health"
+                value={editForm.health}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, health: e.target.value })
+                }
+              >
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="needs attention">Needs Attention</option>
+              </select>
+            </div>
+
+            <div className="form-row">
+              <label htmlFor="water">Watering Instructions</label>
+              <input
+                type="text"
+                id="water"
+                value={editForm.care.water}
+                onChange={(e) =>
+                  setEditForm({
+                    ...editForm,
+                    care: { ...editForm.care, water: e.target.value },
+                  })
+                }
+              />
+            </div>
+
+            <div className="form-row">
+              <label htmlFor="light">Light Requirements</label>
+              <input
+                type="text"
+                id="light"
+                value={editForm.care.light}
+                onChange={(e) =>
+                  setEditForm({
+                    ...editForm,
+                    care: { ...editForm.care, light: e.target.value },
+                  })
+                }
+              />
+            </div>
+
+            <div className="edit-actions">
+              <button
+                type="button"
+                className="action-button"
+                onClick={() => setIsEditing(false)}
+              >
+                Cancel
+              </button>
+              <button type="submit" className="action-button primary">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
 
       <div className="plant-detail-hero">
         <div className="plant-icon-large">{plant.icon}</div>

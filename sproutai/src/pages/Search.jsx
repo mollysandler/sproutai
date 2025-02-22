@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 export default function Search() {
   const plants = [
     {
-      id: 1,
-      name: "Portulacaria Afra",
-      type: "Dwarf Jade",
+      id: "african-violet",
+      name: "African Violet",
+      type: "Flowering Plant",
       image: "/placeholder.svg",
     },
     {
-      id: 2,
-      name: "Crassula Ovata",
-      type: "Classic Jade",
+      id: "jade-plant",
+      name: "Jade Plant",
+      type: "Succulent",
       image: "/placeholder.svg",
     },
   ];
@@ -49,7 +51,9 @@ export default function Search() {
               <div className="plant-details">
                 <h3>{plant.name}</h3>
                 <p>{plant.type}</p>
-                <button className="more-info-button">More Info</button>
+                <Link to={`/search/${plant.id}`} className="more-info-button">
+                  More Info
+                </Link>
               </div>
             </div>
           </div>

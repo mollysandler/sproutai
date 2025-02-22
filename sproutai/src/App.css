@@ -627,10 +627,10 @@ main {
 /* Add these new styles to your existing App.css */
 
 .help-container {
+  height: calc(100vh - 76px); /* Account for bottom nav + padding */
+  overflow-y: auto;
   padding: 16px;
-  height: calc(100vh - 60px); /* Account for bottom nav */
-  display: flex;
-  flex-direction: column;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .help-initial {
@@ -703,6 +703,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-bottom: 76px; /* Add padding at the bottom for nav bar */
 }
 
 .analysis-header {
@@ -832,4 +833,286 @@ main {
   flex: 1;
   text-align: center;
   text-decoration: none;
+}
+
+/* Add these new styles to your existing CSS */
+
+.nav-label {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.plant-card-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Reduced from 12px */
+}
+
+.delete-button {
+  position: absolute;
+  right: 8px; /* Reduced from 16px */
+  background: none;
+  border: none;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 4px; /* Reduced from 8px */
+}
+
+.garden-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.plant-info-container {
+  padding: 16px;
+}
+
+.plant-info-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.plant-info-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.plant-info-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.plant-info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-section {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.info-section h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.care-item h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.care-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.issues-list,
+.tips-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.issues-list li,
+.tips-list li {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+/* Plant of the Day styles */
+.plant-of-day-container {
+  padding: 16px;
+  max-height: calc(100vh - 76px);
+  overflow-y: auto;
+}
+
+.plant-of-day-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.plant-of-day-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.featured-plant {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.featured-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featured-content h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.featured-content h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.plant-description {
+  line-height: 1.6;
+}
+
+.fun-fact {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.fun-fact h4 {
+  margin: 0 0 8px 0;
+  color: var(--primary-color);
+}
+
+.fun-fact p {
+  margin: 0;
+  font-style: italic;
+}
+
+.care-overview {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.care-overview h4 {
+  margin: 0 0 16px 0;
+  color: var(--primary-color);
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.care-item span {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.care-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Edit mode styles */
+.edit-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 1000;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.edit-mode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.edit-mode-header h2 {
+  margin: 0;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row label {
+  font-weight: 500;
+}
+
+.form-row input,
+.form-row select {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
 }

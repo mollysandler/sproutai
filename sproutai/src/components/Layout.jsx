@@ -1,8 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { Search } from "lucide-react";
-import { Camera } from "lucide-react";
-import { Home } from "lucide-react";
-import { Leaf } from "lucide-react";
+import { Search, Camera, Home, Leaf } from "lucide-react";
 
 function Layout() {
   return (
@@ -14,15 +11,19 @@ function Layout() {
         <div className="nav-items">
           <Link to="/" className="nav-link">
             <Home size={24} />
+            <span className="nav-label">Home</span>
           </Link>
           <Link to="/search" className="nav-link">
             <Search size={24} />
+            <span className="nav-label">Search</span>
           </Link>
           <Link to="/help" className="nav-link">
             <Camera size={24} />
+            <span className="nav-label">Help</span>
           </Link>
           <Link to="/garden" className="nav-link">
             <Leaf size={24} />
+            <span className="nav-label">Garden</span>
           </Link>
         </div>
       </nav>

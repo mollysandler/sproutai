@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="header">
-        <h1 className="title">SproutAI</h1>
+        <h1 className="title">Plantify</h1>
         <button className="icon-button">
           <Cog style={{ width: "24px", height: "24px" }} />
         </button>
@@ -15,7 +15,7 @@ export default function Home() {
         <div className="logo-circle">
           <div className="logo-inner">
             <img
-              src="/bruh.png"
+              src="/placeholder.svg"
               alt="Plant Logo"
               style={{ width: "80px", height: "80px", objectFit: "contain" }}
             />
@@ -29,7 +29,18 @@ export default function Home() {
 
       <div className="main-buttons">
         <button className="main-button">View Reminders/Schedule</button>
-        <button className="main-button">Plant of the Day!</button>
+        <Link
+          to="/plant-of-day"
+          className="main-button"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+          }}
+        >
+          Plant of the Day!
+        </Link>
       </div>
 
       <div className="action-cards">

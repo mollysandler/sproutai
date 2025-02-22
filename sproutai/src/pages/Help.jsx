@@ -2,13 +2,22 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Camera, X, Check, AlertTriangle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getPlants, updatePlant } from "../utils/plantStorage";
 
 export default function Help() {
-  const [mode, setMode] = useState("initial"); // initial, camera, analysis
+  const navigate = useNavigate();
+  const [mode, setMode] = useState("initial");
   const [capturedImage, setCapturedImage] = useState(null);
+  const [selectedPlant, setSelectedPlant] = useState(null);
+  const [plants, setPlants] = useState([]);
   const videoRef = useRef(null);
   const streamRef = useRef(null);
+
+  // Load plants when component mounts
+  useEffect(() => {
+    setPlants(getPlants());
+  }, []);
 
   useEffect(() => {
     if (mode === "camera") {
@@ -61,8 +70,11 @@ export default function Help() {
 
   const retakePhoto = () => {
     setCapturedImage(null);
+    setAnalysisResult(null);
     startCamera();
   };
+
+  const [analysisResult, setAnalysisResult] = useState(null);
 
   // Simulate plant analysis - in a real app, this would call an AI service
   const analyzeImage = () => {
@@ -80,7 +92,31 @@ export default function Help() {
     }, 1500);
   };
 
-  const [analysisResult, setAnalysisResult] = useState(null);
+  const saveToHistory = () => {
+    if (!selectedPlant) {
+      alert("Please select a plant to save this analysis to.");
+      return;
+    }
+
+    const today = new Date().toISOString().split("T")[0];
+    const updatedPlant = updatePlant(selectedPlant.id, {
+      health: analysisResult.condition,
+      history: [
+        {
+          date: today,
+          action: "Health Check",
+          notes: `Issues: ${analysisResult.issues.join(
+            ", "
+          )}. Recommendations: ${analysisResult.recommendations.join(", ")}`,
+        },
+        ...selectedPlant.history,
+      ],
+    });
+
+    if (updatedPlant) {
+      navigate(`/garden/${selectedPlant.id}`);
+    }
+  };
 
   return (
     <div className="help-container">
@@ -158,6 +194,27 @@ export default function Help() {
               </div>
 
               <div className="analysis-section">
+                <h2>Select Plant</h2>
+                <select
+                  className="plant-select"
+                  value={selectedPlant?.id || ""}
+                  onChange={(e) => {
+                    const plant = plants.find(
+                      (p) => p.id === Number(e.target.value)
+                    );
+                    setSelectedPlant(plant);
+                  }}
+                >
+                  <option value="">Choose a plant...</option>
+                  {plants.map((plant) => (
+                    <option key={plant.id} value={plant.id}>
+                      {plant.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="analysis-section">
                 <h2>Identified Issues</h2>
                 <ul className="issues-list">
                   {analysisResult.issues.map((issue, index) => (
@@ -179,7 +236,11 @@ export default function Help() {
                 <Link to="/garden" className="action-button">
                   View My Garden
                 </Link>
-                <button className="action-button primary">
+                <button
+                  className="action-button primary"
+                  onClick={saveToHistory}
+                  disabled={!selectedPlant}
+                >
                   Save to Plant History
                 </button>
               </div>
