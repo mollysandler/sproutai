@@ -37,6 +37,7 @@ export default function Home() {
             alignItems: "center",
             justifyContent: "center",
             textDecoration: "none",
+            color: "black",
           }}
         >
           Plant of the Day!
