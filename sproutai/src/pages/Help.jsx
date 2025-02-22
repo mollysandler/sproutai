@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Camera, X, Check, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,16 +10,27 @@ export default function Help() {
   const videoRef = useRef(null);
   const streamRef = useRef(null);
 
+  useEffect(() => {
+    if (mode === "camera") {
+      startCamera();
+    }
+    return () => {
+      stopCamera(); // Cleanup on unmount
+    };
+  }, [mode]); // Run when mode changes
+
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
+        video: true, // Let the browser choose the default camera
       });
       videoRef.current.srcObject = stream;
       streamRef.current = stream;
       setMode("camera");
     } catch (err) {
       console.error("Error accessing camera:", err);
+      console.error("Error name:", err.name); // Get the error name
+      console.error("Error message:", err.message); // Get the specific error message
       alert(
         "Unable to access camera. Please make sure you have granted camera permissions."
       );
@@ -80,7 +91,7 @@ export default function Help() {
             Take a photo of your plant and I'll help identify any issues and
             provide care recommendations.
           </p>
-          <button className="camera-button" onClick={startCamera}>
+          <button className="camera-button" onClick={() => setMode("camera")}>
             <Camera size={24} />
             Open Camera
           </button>
