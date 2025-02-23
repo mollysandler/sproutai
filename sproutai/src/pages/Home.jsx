@@ -15,7 +15,7 @@ export default function Home() {
         <div className="logo-circle">
           <div className="logo-inner">
             <img
-              src="/placeholder.svg"
+              src="/bruh.png"
               alt="Plant Logo"
               style={{ width: "80px", height: "80px", objectFit: "contain" }}
             />
