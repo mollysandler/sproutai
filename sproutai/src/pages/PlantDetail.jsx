@@ -12,8 +12,12 @@ import {
   X,
 } from "lucide-react";
 import { getPlantById, updatePlant } from "../utils/plantStorage";
+import CameraComponent from "../components/CameraComponent";
 
 export default function PlantDetail() {
+  // Add these new states
+  const [showCamera, setShowCamera] = useState(false);
+  const [plantPhoto, setPlantPhoto] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
   const [plant, setPlant] = useState(null);
@@ -91,6 +95,28 @@ export default function PlantDetail() {
     if (updatedPlant) {
       setPlant(updatedPlant);
       setIsEditing(false);
+    }
+  };
+
+  const handlePhotoCapture = (photoData) => {
+    setPlantPhoto(photoData);
+    setShowCamera(false);
+
+    // Update plant with new photo
+    const updatedPlant = updatePlant(Number(id), {
+      ...plant,
+      photos: [
+        {
+          url: photoData,
+          date: new Date().toISOString(),
+          note: "Plant photo added",
+        },
+        ...(plant.photos || []),
+      ],
+    });
+
+    if (updatedPlant) {
+      setPlant(updatedPlant);
     }
   };
 
@@ -303,8 +329,25 @@ export default function PlantDetail() {
         </div>
       </div>
 
+      <div className="plant-detail-section">
+        <h2>Photos</h2>
+        <div className="photos-grid">
+          {plant.photos?.map((photo, index) => (
+            <div key={index} className="photo-item">
+              <img
+                src={photo.url || "/placeholder.svg"}
+                alt={`Plant photo ${index + 1}`}
+              />
+              <span className="photo-date">
+                {new Date(photo.date).toLocaleDateString()}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="plant-detail-actions">
-        <button className="action-button">
+        <button className="action-button" onClick={() => setShowCamera(true)}>
           <Camera size={20} />
           Add Photo
         </button>
@@ -313,6 +356,13 @@ export default function PlantDetail() {
           Log Watering
         </button>
       </div>
+
+      {showCamera && (
+        <CameraComponent
+          onCapture={handlePhotoCapture}
+          onClose={() => setShowCamera(false)}
+        />
+      )}
     </div>
   );
 }

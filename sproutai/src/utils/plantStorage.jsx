@@ -23,6 +23,7 @@ export const getPlants = () => {
           lastWatered: "2024-02-18",
           nextWatering: "2024-02-22",
           health: "good",
+          photos: [], // Add photos array
           care: {
             water: "Keep soil consistently moist",
             light: "Indirect bright light",
@@ -57,15 +58,16 @@ export const getPlants = () => {
 export const addPlant = (plantData) => {
   const plants = getPlants();
   const newPlant = {
-    id: Date.now(), // Use timestamp as unique ID
-    icon: "🪴", // Default icon
+    id: Date.now(),
+    icon: "🪴",
     type: "Unknown",
     acquired: new Date().toISOString().split("T")[0],
     lastWatered: new Date().toISOString().split("T")[0],
     nextWatering: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
       .toISOString()
-      .split("T")[0], // 7 days from now
+      .split("T")[0],
     health: "good",
+    photos: [], // Add photos array
     care: defaultCareTemplate,
     notes: "",
     history: [

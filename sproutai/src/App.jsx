@@ -8,6 +8,8 @@ import PlantDetail from "./pages/PlantDetail";
 import NewPlant from "./pages/NewPlant";
 import PlantInfo from "./pages/PlantInfo";
 import PlantOfTheDay from "./pages/PlantOfTheDay";
+import Settings from "./pages/Settings";
+import Schedule from "./pages/Schedule";
 import "./App.css";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/search/:name" element={<PlantInfo />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/schedule" element={<Schedule />} />
       </Route>
     </Routes>
   );

@@ -6,9 +6,9 @@ export default function Home() {
     <div className="home-container">
       <div className="header">
         <h1 className="title">Plantify</h1>
-        <button className="icon-button">
+        <Link to="/settings" className="icon-button">
           <Cog style={{ width: "24px", height: "24px" }} />
-        </button>
+        </Link>
       </div>
 
       <div className="logo-container">
@@ -28,7 +28,19 @@ export default function Home() {
       </div>
 
       <div className="main-buttons">
-        <button className="main-button">View Reminders/Schedule</button>
+        <Link
+          to="/schedule"
+          className="main-button"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          View Reminders/Schedule
+        </Link>
         <Link
           to="/plant-of-day"
           className="main-button"
@@ -37,7 +49,7 @@ export default function Home() {
             alignItems: "center",
             justifyContent: "center",
             textDecoration: "none",
-            color: "black",
+            color: "inherit",
           }}
         >
           Plant of the Day!
