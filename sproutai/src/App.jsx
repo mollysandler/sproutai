@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Garden from "./pages/Garden";
+import Search from "./pages/Search";
+import Help from "./pages/Help";
+import PlantDetail from "./pages/PlantDetail";
+import NewPlant from "./pages/NewPlant";
+import PlantInfo from "./pages/PlantInfo";
+import PlantOfTheDay from "./pages/PlantOfTheDay";
+import Settings from "./pages/Settings";
+import Schedule from "./pages/Schedule";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/garden" element={<Garden />} />
+        <Route path="/plant-of-day" element={<PlantOfTheDay />} />
+        <Route path="/garden/new" element={<NewPlant />} />
+        <Route path="/garden/:id" element={<PlantDetail />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/search/:name" element={<PlantInfo />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/schedule" element={<Schedule />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
