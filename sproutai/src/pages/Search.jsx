@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../styles/plant-database.css";
 
 export default function Search() {
   const plants = [
@@ -46,7 +47,6 @@ export default function Search() {
                 src={plant.image || "/placeholder.svg"}
                 alt={plant.name}
                 className="plant-image"
-                style={{ width: "80px", height: "80px" }}
               />
               <div className="plant-details">
                 <h3>{plant.name}</h3>

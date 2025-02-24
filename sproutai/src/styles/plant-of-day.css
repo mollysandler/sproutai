@@ -1,0 +1,103 @@
+.plant-of-day-container {
+  padding: 16px;
+  max-height: calc(100vh - 76px);
+  overflow-y: auto;
+}
+
+.plant-of-day-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.plant-of-day-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.featured-plant {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.featured-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featured-content h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.featured-content h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.plant-description {
+  line-height: 1.6;
+}
+
+.fun-fact {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.fun-fact h4 {
+  margin: 0 0 8px 0;
+  color: var(--primary-color);
+}
+
+.fun-fact p {
+  margin: 0;
+  font-style: italic;
+}
+
+.care-overview {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.care-overview h4 {
+  margin: 0 0 16px 0;
+  color: var(--primary-color);
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.care-item span {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.care-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}

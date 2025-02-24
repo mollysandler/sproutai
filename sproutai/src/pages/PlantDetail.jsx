@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import { getPlantById, updatePlant } from "../utils/plantStorage";
 import CameraComponent from "../components/CameraComponent";
+import "../styles/plant-detail.css";
+import "../styles/camera.css";
+import "../styles/forms.css";
 
 export default function PlantDetail() {
   // Add these new states

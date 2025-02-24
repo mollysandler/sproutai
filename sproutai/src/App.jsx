@@ -10,7 +10,10 @@ import PlantInfo from "./pages/PlantInfo";
 import PlantOfTheDay from "./pages/PlantOfTheDay";
 import Settings from "./pages/Settings";
 import Schedule from "./pages/Schedule";
-import "./App.css";
+// import "./App.css";
+import "./styles/global.css";
+import "./styles/navigation.css";
+import "./styles/index.css";
 
 function App() {
   return (

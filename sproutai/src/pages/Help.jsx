@@ -163,9 +163,6 @@ export default function Help() {
         <div className="analysis-view">
           <div className="analysis-header">
             <h1>Plant Analysis</h1>
-            <button className="retake-button" onClick={retakePhoto}>
-              Retake Photo
-            </button>
           </div>
 
           <div className="captured-image-container">
