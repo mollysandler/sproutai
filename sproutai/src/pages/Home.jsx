@@ -1,5 +1,6 @@
 import { Cog, Camera, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import "../styles/home.css";
 
 export default function Home() {
   return (

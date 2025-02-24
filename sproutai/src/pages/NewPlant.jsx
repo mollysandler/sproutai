@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Camera } from "lucide-react";
 import { addPlant } from "../utils/plantStorage";
 import CameraComponent from "../components/CameraComponent";
+import "../styles/forms.css";
+import "../styles/camera.css";
+import "../styles/new-plant.css";
 
 export default function NewPlant() {
   const navigate = useNavigate();
@@ -19,6 +22,11 @@ export default function NewPlant() {
   const handlePhotoCapture = (photoData) => {
     setPlantPhoto(photoData);
     setShowCamera(false);
+  };
+
+  const handleRetakePhoto = (e) => {
+    e.stopPropagation(); // Prevent the click from bubbling to parent
+    setShowCamera(true);
   };
 
   const handleSubmit = (e) => {
@@ -62,16 +70,6 @@ export default function NewPlant() {
           {plantPhoto ? (
             <div className="photo-preview">
               <img src={plantPhoto || "/placeholder.svg"} alt="Plant preview" />
-              <button
-                type="button"
-                className="retake-photo"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowCamera(true);
-                }}
-              >
-                Retake Photo
-              </button>
             </div>
           ) : (
             <div className="photo-placeholder">

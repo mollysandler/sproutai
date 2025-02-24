@@ -4,6 +4,7 @@ import { PlusCircle, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getPlants } from "../utils/plantStorage";
 import { useState, useEffect } from "react";
+import "../styles/garden.css";
 
 export default function Garden() {
   const [plants, setPlants] = useState([]);

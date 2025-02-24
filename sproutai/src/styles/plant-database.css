@@ -1,0 +1,168 @@
+.search-container {
+  padding: 16px;
+}
+
+.search-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #666;
+}
+
+.plant-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plant-result-card {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.plant-info {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+}
+
+.plant-image {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.plant-details {
+  flex: 1;
+}
+
+.plant-details h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.plant-details p {
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.more-info-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary-color);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.more-info-button:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+/* Plant Info Page */
+.plant-info-container {
+  padding: 16px;
+}
+
+.plant-info-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.plant-info-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.plant-info-image {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.plant-info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-section {
+  background-color: var(--background-color);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.info-section h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.care-item h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.care-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.issues-list,
+.tips-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.issues-list li,
+.tips-list li {
+  margin-bottom: 8px;
+  color: #666;
+}
