@@ -230,7 +230,11 @@ export default function Help() {
               </div>
 
               <div className="analysis-actions">
-                <Link to="/garden" className="action-button">
+                <Link
+                  to="/garden"
+                  className="action-button"
+                  style={{ color: "black" }}
+                >
                   View My Garden
                 </Link>
                 <button
