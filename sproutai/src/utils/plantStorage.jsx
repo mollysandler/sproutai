@@ -16,7 +16,7 @@ export const getPlants = () => {
     : [
         {
           id: 1,
-          name: "Fern Flower",
+          name: "Fern Flower Five",
           icon: "🌿",
           type: "Boston Fern",
           acquired: "2023-12-15",
