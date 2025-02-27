@@ -10,6 +10,6 @@ Adya Choudhary
 
 ### how to run!!
 - cd into the sproutai directory withoin the first sproutai
-- npm install react-router-dom (*only if needed*)
 - run npm install
+- run npm install react-router-dom (*only if needed*)
 - run npm run dev
