@@ -74,7 +74,7 @@ export default function Schedule() {
         <h1>Care Schedule</h1>
       </div>
 
-      <div className="schedule-view-toggle">
+      {/* <div className="schedule-view-toggle">
         <button
           className={`toggle-button ${view === "upcoming" ? "active" : ""}`}
           onClick={() => setView("upcoming")}
@@ -87,7 +87,7 @@ export default function Schedule() {
         >
           Calendar
         </button>
-      </div>
+      </div> */}
 
       {view === "upcoming" && (
         <div className="upcoming-tasks">
@@ -116,11 +116,11 @@ export default function Schedule() {
         </div>
       )}
 
-      {view === "calendar" && (
+      {/* {view === "calendar" && (
         <div className="calendar-view">
           <p className="text-center text-muted">Calendar view coming soon!</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
