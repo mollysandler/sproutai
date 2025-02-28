@@ -40,7 +40,7 @@ export default function Home() {
             color: "inherit",
           }}
         >
-          View Reminders/Schedule
+          View Schedule
         </Link>
         <Link
           to="/plant-of-day"
