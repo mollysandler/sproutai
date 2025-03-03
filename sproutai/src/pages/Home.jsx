@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="header">
-        <h1 className="title">Plantify</h1>
+        <h1 className="title">SproutAI</h1>
         <Link to="/settings" className="icon-button">
           <Cog style={{ width: "24px", height: "24px" }} />
         </Link>
