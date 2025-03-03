@@ -1,8 +1,40 @@
 import { Cog, Camera, Search } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
 
 export default function Home() {
+  const [displayName, setDisplayName] = useState("Amelia"); // Default Value
+
+  useEffect(() => {
+    // Function to get the display name from localStorage
+    const getDisplayName = () => {
+      const storedSettings = localStorage.getItem("userSettings");
+      if (storedSettings) {
+        const settings = JSON.parse(storedSettings);
+        if (settings.username) {
+          setDisplayName(settings.username);
+        }
+      }
+    };
+
+    getDisplayName(); // Call on initial load
+
+    // Listen for storage events to update display name when settings change
+    const handleStorageChange = (event) => {
+      if (event.key === "userSettings") {
+        getDisplayName(); // Refresh display name
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []); // Run only once on mount, and when storage changes
+
   return (
     <div className="home-container">
       <div className="header">
@@ -25,7 +57,7 @@ export default function Home() {
       </div>
 
       <div className="welcome-section">
-        <h2>Welcome, Amelia!</h2>
+        <h2>Welcome, {displayName}!</h2>
       </div>
 
       <div className="main-buttons">

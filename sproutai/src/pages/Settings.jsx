@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft, Bell, Moon, User, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -14,19 +14,25 @@ export default function Settings() {
     fertilizingReminders: true,
   });
 
+  useEffect(() => {
+    // Load settings from localStorage on initial render
+    const storedSettings = localStorage.getItem("userSettings");
+    if (storedSettings) {
+      setSettings(JSON.parse(storedSettings));
+    }
+  }, []); // Run only once on mount
+
   const handleChange = (key, value) => {
-    setSettings((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-    // In a real app, you'd save this to localStorage or a backend
-    localStorage.setItem(
-      "userSettings",
-      JSON.stringify({
-        ...settings,
+    setSettings((prev) => {
+      const updatedSettings = {
+        ...prev,
         [key]: value,
-      })
-    );
+      };
+
+      // Save to localStorage *after* the state is updated
+      localStorage.setItem("userSettings", JSON.stringify(updatedSettings));
+      return updatedSettings; // Return the updated settings
+    });
   };
 
   return (
