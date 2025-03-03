@@ -9,7 +9,7 @@ const plantDatabase = [
     id: 1,
     name: "Monstera Deliciosa",
     commonName: "Swiss Cheese Plant",
-    image: "/placeholder.svg",
+    image: "/monstera-deliciosa.jpg",
     description:
       "Known for its distinctive leaves with natural holes, the Monstera deliciosa is a stunning tropical plant that can add a dramatic touch to any space.",
     funFact:
@@ -25,7 +25,7 @@ const plantDatabase = [
     id: 2,
     name: "Strelitzia Nicolai",
     commonName: "Bird of Paradise",
-    image: "/placeholder.svg",
+    image: "/strelitzia nicolai.jpg",
     description:
       "A dramatic plant with large, banana-like leaves that can make any space feel like a tropical paradise.",
     funFact:
@@ -41,7 +41,7 @@ const plantDatabase = [
     id: 3,
     name: "Ficus Lyrata",
     commonName: "Fiddle Leaf Fig",
-    image: "/placeholder.svg",
+    image: "/ficus lirata.jpg",
     description:
       "Popular for its large, violin-shaped leaves and striking appearance.",
     funFact: "In its natural habitat, it can grow up to 40-50 feet tall!",
@@ -56,7 +56,7 @@ const plantDatabase = [
     id: 4,
     name: "Calathea Orbifolia",
     commonName: "Round-Leaved Calathea",
-    image: "/placeholder.svg",
+    image: "/calathea orbifolia.jpg",
     description: "Known for its stunning round leaves with silvery stripes.",
     funFact:
       "Calatheas are known as 'prayer plants' because their leaves move up at night and down during the day.",
@@ -71,7 +71,7 @@ const plantDatabase = [
     id: 5,
     name: "Zamioculcas Zamiifolia",
     commonName: "ZZ Plant",
-    image: "/placeholder.svg",
+    image: "/zamioculcas zamifolia.jpg",
     description: "An extremely hardy plant with glossy, dark green leaves.",
     funFact:
       "Can survive in very low light conditions and go weeks without water.",
@@ -86,7 +86,7 @@ const plantDatabase = [
     id: 6,
     name: "Epipremnum Aureum",
     commonName: "Pothos",
-    image: "/placeholder.svg",
+    image: "/epipremnum aureum.jpg",
     description:
       "A versatile vine with heart-shaped leaves that's perfect for beginners.",
     funFact: "In the wild, pothos leaves can grow up to 3 feet wide!",
@@ -101,7 +101,7 @@ const plantDatabase = [
     id: 7,
     name: "Spathiphyllum",
     commonName: "Peace Lily",
-    image: "/placeholder.svg",
+    image: "/spathiphyllum.jpg",
     description:
       "Elegant white flowers and glossy green leaves make this a classic choice.",
     funFact: "NASA lists it as one of the best plants for cleaning indoor air.",
@@ -116,7 +116,7 @@ const plantDatabase = [
     id: 8,
     name: "Sansevieria Trifasciata",
     commonName: "Snake Plant",
-    image: "/placeholder.svg",
+    image: "/Sansevieria Trifasciata.jpg",
     description:
       "Striking upright leaves with beautiful patterns make this plant a modern classic.",
     funFact: "It's one of the few plants that release oxygen at night.",
@@ -131,7 +131,7 @@ const plantDatabase = [
     id: 9,
     name: "Philodendron Brasil",
     commonName: "Heart Leaf Philodendron",
-    image: "/placeholder.svg",
+    image: "/Philodendron Brasil.jpg",
     description:
       "A cheerful trailing plant with variegated heart-shaped leaves.",
     funFact:
@@ -147,7 +147,7 @@ const plantDatabase = [
     id: 10,
     name: "Maranta Leuconeura",
     commonName: "Prayer Plant",
-    image: "/placeholder.svg",
+    image: "/Maranta Leuconeura.jpg",
     description:
       "Features stunning patterned leaves that move throughout the day.",
     funFact:
