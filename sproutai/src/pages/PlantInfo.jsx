@@ -36,7 +36,7 @@ export default function PlantInfo() {
       </div>
 
       <div className="plant-info-image">
-        <img src={"/" + plantInfo.name + "2.png"} alt={plantInfo.name} />
+        <img src={plantInfo.image} alt={plantInfo.name} />{" "}
       </div>
 
       <div className="plant-info-content">
@@ -94,7 +94,7 @@ const plantDatabase = {
     name: "African Violet",
     description:
       "African violets are small, cheerful plants that produce clusters of violet, pink, or white flowers over fuzzy, dark green leaves. They make excellent houseplants and can bloom continuously when properly cared for.",
-    image: null, // added image null
+    image: "/african-violet.png",
     care: {
       light: "Bright, indirect light. Avoid direct sunlight.",
       water:
@@ -121,7 +121,7 @@ const plantDatabase = {
     name: "Jade Plant",
     description:
       "Jade plants are succulent houseplants that are extremely popular and easy to grow. They have thick, woody stems and oval-shaped leaves that are also thick and glossy.",
-    image: null, // added image null
+    image: "/jade-plant.png",
     care: {
       light:
         "Bright, direct to indirect light. At least 6 hours of sunlight daily.",

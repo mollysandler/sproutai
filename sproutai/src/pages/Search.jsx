@@ -7,7 +7,7 @@ export default function Search() {
       id: "african-violet",
       name: "African Violet",
       type: "Flowering Plant",
-      image: "/African Violet.png", // You might want to update this path
+      image: "/african-violet.png", // You might want to update this path
     },
     {
       id: "jade-plant",
