@@ -36,7 +36,8 @@ export default function PlantInfo() {
       </div>
 
       <div className="plant-info-image">
-        <img src={plantInfo.image || "/placeholder.svg"} alt={plantInfo.name} />
+        <img src={"/" + plantInfo.name + "2.png"} alt={plantInfo.name} />
+        
       </div>
 
       <div className="plant-info-content">

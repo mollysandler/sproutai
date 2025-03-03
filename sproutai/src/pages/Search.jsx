@@ -7,13 +7,13 @@ export default function Search() {
       id: "african-violet",
       name: "African Violet",
       type: "Flowering Plant",
-      image: "/placeholder.svg",
+      image: "/African Violet.png",
     },
     {
       id: "jade-plant",
       name: "Jade Plant",
       type: "Succulent",
-      image: "/placeholder.svg",
+      image: "/jade-plant.png",
     },
   ];
 
