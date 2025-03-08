@@ -15,7 +15,7 @@ function Layout() {
           </Link>
           <Link to="/search" className="nav-link">
             <Search size={24} />
-            <span className="nav-label">Search</span>
+            <span className="nav-label">Plant-Base</span>
           </Link>
           <Link to="/help" className="nav-link">
             <Camera size={24} />

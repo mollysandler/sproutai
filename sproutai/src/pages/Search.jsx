@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/plant-database.css";
+import { useState } from "react";
 
 export default function Search() {
   const plants = [
@@ -77,12 +78,30 @@ export default function Search() {
     // },
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState(plants);
+
+  const handleSearch = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+
+    const filteredPlants = plants.filter((plant) =>
+      plant.name.toLowerCase().includes(term.toLowerCase())
+    );
+    setSearchResults(filteredPlants);
+  };
+
   return (
     <div className="search-container">
       <h1>Plant-Base</h1>
 
-      {/* <div className="search-box">
-        <input type="search" placeholder="Search plants..." />
+      <div className="search-box">
+        <input
+          type="search"
+          placeholder="Search plants..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="search-icon"
@@ -97,10 +116,10 @@ export default function Search() {
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
-      </div> */}
+      </div>
 
       <div className="plant-results">
-        {plants.map((plant) => (
+        {searchResults.map((plant) => (
           <div key={plant.id} className="plant-result-card">
             <div className="plant-info">
               <img
