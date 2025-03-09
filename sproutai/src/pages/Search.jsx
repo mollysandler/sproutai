@@ -120,22 +120,22 @@ export default function Search() {
 
       <div className="plant-results">
         {searchResults.map((plant) => (
-          <div key={plant.id} className="plant-result-card">
-            <div className="plant-info">
-              <img
-                src={plant.image || "/placeholder.svg"}
-                alt={plant.name}
-                className="plant-image"
-              />
-              <div className="plant-details">
-                <h3>{plant.name}</h3>
-                <p>{plant.type}</p>
-                <Link to={`/search/${plant.id}`} className="more-info-button">
-                  More Info
-                </Link>
+          <Link to={`/search/${plant.id}`} className="more-info-button">
+            <div key={plant.id} className="plant-result-card">
+              <div className="plant-info">
+                <img
+                  src={plant.image || "/placeholder.svg"}
+                  alt={plant.name}
+                  className="plant-image"
+                />
+                <div className="plant-details">
+                  <h3>{plant.name}</h3>
+                  <p>{plant.type}</p>
+                  <p>More Info</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
