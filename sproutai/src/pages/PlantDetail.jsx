@@ -16,6 +16,7 @@ import CameraComponent from "../components/CameraComponent";
 import "../styles/plant-detail.css";
 import "../styles/camera.css";
 import "../styles/forms.css";
+import { plants } from "./Search.jsx";
 
 export default function PlantDetail() {
   // Add these new states
@@ -38,11 +39,13 @@ export default function PlantDetail() {
   });
 
   const [isWatering, setIsWatering] = useState(false); // New loading state
+  const [selectedPlantType, setSelectedPlantType] = useState(""); // New state for dropdown
 
   useEffect(() => {
     const plantData = getPlantById(id);
     if (plantData) {
       setPlant(plantData);
+      setSelectedPlantType(plantData.type || ""); // Initialize dropdown with existing type
     }
   }, [id]);
 
@@ -91,6 +94,25 @@ export default function PlantDetail() {
     }
 
     setIsWatering(false); // Stop loading
+  };
+
+  const handlePlantTypeChange = (e) => {
+    setSelectedPlantType(e.target.value);
+  };
+
+  const handleSavePlantType = () => {
+    // Update the plant's type in the database
+    const updatedPlant = updatePlant(Number(id), {
+      ...plant,
+      type: selectedPlantType,
+    });
+
+    if (updatedPlant) {
+      setPlant(updatedPlant);
+      alert("Plant type saved!");
+    } else {
+      alert("Failed to save plant type.");
+    }
   };
 
   const handleEditSubmit = (e) => {
@@ -173,6 +195,7 @@ export default function PlantDetail() {
           </div>
 
           <form onSubmit={handleEditSubmit} className="edit-form">
+            {/* ... (rest of the edit form) ... */}
             <div className="form-row">
               <label htmlFor="name">Plant Name</label>
               <input
@@ -321,9 +344,29 @@ export default function PlantDetail() {
           </div>
         </div>
       </div>
+      {/* Plant Type Dropdown */}
+      <div className="plant-type-selection">
+        <label htmlFor="plantType">Assign Plant Type:</label>
+        <select
+          id="plantType"
+          value={selectedPlantType}
+          onChange={handlePlantTypeChange}
+        >
+          <option value="">Select Plant Type</option>
+          {plants.map((plantType) => (
+            <option key={plantType.id} value={plantType.type}>
+              {plantType.name} ({plantType.type})
+            </option>
+          ))}
+        </select>
+        <button className="action-button" onClick={handleSavePlantType}>
+          Update Plant Type
+        </button>
+      </div>
 
       <div className="plant-detail-section">
         <h2>Care Instructions</h2>
+
         <div className="care-instructions">
           <div className="care-item">
             <h3>Water</h3>

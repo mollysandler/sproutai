@@ -2,82 +2,82 @@ import { Link } from "react-router-dom";
 import "../styles/plant-database.css";
 import { useState } from "react";
 
-export default function Search() {
-  const plants = [
-    {
-      id: "african-violet",
-      name: "African Violet",
-      type: "Flowering Plant",
-      image: "/african-violet.png", // You might want to update this path
-    },
-    {
-      id: "jade-plant",
-      name: "Jade Plant",
-      type: "Succulent",
-      image: "/jade-plant.png", // You might want to update this path
-    },
-    {
-      id: "monstera-deliciosa",
-      name: "Monstera Deliciosa",
-      type: "Swiss Cheese Plant",
-      image: "/monstera-deliciosa.jpg",
-    },
-    {
-      id: "strelitzia-nicolai",
-      name: "Strelitzia Nicolai",
-      type: "Tropical",
-      image: "/strelitzia nicolai.jpg",
-    },
-    {
-      id: "ficus-lyrata",
-      name: "Ficus Lyrata",
-      type: "Foliage Plant",
-      image: "/ficus lirata.jpg",
-    },
-    // {
-    //   id: "calathea-orbifolia",
-    //   name: "Calathea Orbifolia",
-    //   type: "Foliage Plant",
-    //   image: "/calathea orbifolia.jpg",
-    // },
-    // {
-    //   id: "zamioculcas-zamiifolia",
-    //   name: "Zamioculcas Zamiifolia",
-    //   type: "Foliage Plant",
-    //   image: "/zamioculcas zamifolia.jpg",
-    // },
-    // {
-    //   id: "epipremnum-aureum",
-    //   name: "Epipremnum Aureum",
-    //   type: "Vine",
-    //   image: "/epipremnum aureum.jpg",
-    // },
-    // {
-    //   id: "spathiphyllum",
-    //   name: "Spathiphyllum",
-    //   type: "Flowering Plant",
-    //   image: "/spathiphyllum.jpg",
-    // },
-    // {
-    //   id: "sansevieria-trifasciata",
-    //   name: "Sansevieria Trifasciata",
-    //   type: "Succulent",
-    //   image: "/Sansevieria Trifasciata.jpg",
-    // },
-    // {
-    //   id: "philodendron-brasil",
-    //   name: "Philodendron Brasil",
-    //   type: "Vine",
-    //   image: "/Philodendron Brasil.jpg",
-    // },
-    // {
-    //   id: "maranta-leuconeura",
-    //   name: "Maranta Leuconeura",
-    //   type: "Foliage Plant",
-    //   image: "/Maranta Leuconeura.jpg",
-    // },
-  ];
+export const plants = [
+  {
+    id: "african-violet",
+    name: "African Violet",
+    type: "Flowering Plant",
+    image: "/african-violet.png", // You might want to update this path
+  },
+  {
+    id: "jade-plant",
+    name: "Jade Plant",
+    type: "Succulent",
+    image: "/jade-plant.png", // You might want to update this path
+  },
+  {
+    id: "monstera-deliciosa",
+    name: "Monstera Deliciosa",
+    type: "Swiss Cheese Plant",
+    image: "/monstera-deliciosa.jpg",
+  },
+  {
+    id: "strelitzia-nicolai",
+    name: "Strelitzia Nicolai",
+    type: "Tropical",
+    image: "/strelitzia nicolai.jpg",
+  },
+  {
+    id: "ficus-lyrata",
+    name: "Ficus Lyrata",
+    type: "Foliage Plant",
+    image: "/ficus lirata.jpg",
+  },
+  // {
+  //   id: "calathea-orbifolia",
+  //   name: "Calathea Orbifolia",
+  //   type: "Foliage Plant",
+  //   image: "/calathea orbifolia.jpg",
+  // },
+  // {
+  //   id: "zamioculcas-zamiifolia",
+  //   name: "Zamioculcas Zamiifolia",
+  //   type: "Foliage Plant",
+  //   image: "/zamioculcas zamifolia.jpg",
+  // },
+  // {
+  //   id: "epipremnum-aureum",
+  //   name: "Epipremnum Aureum",
+  //   type: "Vine",
+  //   image: "/epipremnum aureum.jpg",
+  // },
+  // {
+  //   id: "spathiphyllum",
+  //   name: "Spathiphyllum",
+  //   type: "Flowering Plant",
+  //   image: "/spathiphyllum.jpg",
+  // },
+  // {
+  //   id: "sansevieria-trifasciata",
+  //   name: "Sansevieria Trifasciata",
+  //   type: "Succulent",
+  //   image: "/Sansevieria Trifasciata.jpg",
+  // },
+  // {
+  //   id: "philodendron-brasil",
+  //   name: "Philodendron Brasil",
+  //   type: "Vine",
+  //   image: "/Philodendron Brasil.jpg",
+  // },
+  // {
+  //   id: "maranta-leuconeura",
+  //   name: "Maranta Leuconeura",
+  //   type: "Foliage Plant",
+  //   image: "/Maranta Leuconeura.jpg",
+  // },
+];
 
+export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(plants);
 
