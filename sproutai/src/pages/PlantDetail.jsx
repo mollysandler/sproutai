@@ -37,6 +37,8 @@ export default function PlantDetail() {
     },
   });
 
+  const [isWatering, setIsWatering] = useState(false); // New loading state
+
   useEffect(() => {
     const plantData = getPlantById(id);
     if (plantData) {
@@ -60,11 +62,16 @@ export default function PlantDetail() {
     }
   }, [plant]);
 
-  const handleWatering = () => {
+  const handleWatering = async () => {
+    setIsWatering(true); // Start loading
+
     const today = new Date().toISOString().split("T")[0];
     const nextWatering = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
       .toISOString()
       .split("T")[0];
+
+    // Simulate an API call or processing time (2 seconds)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     const updatedPlant = updatePlant(Number(id), {
       lastWatered: today,
@@ -82,6 +89,8 @@ export default function PlantDetail() {
     if (updatedPlant) {
       setPlant(updatedPlant);
     }
+
+    setIsWatering(false); // Stop loading
   };
 
   const handleEditSubmit = (e) => {
@@ -278,7 +287,23 @@ export default function PlantDetail() {
           <Droplet size={20} />
           <div>
             <h3>Last Watered</h3>
-            <p>{new Date(plant.lastWatered).toLocaleDateString()}</p>
+            <p style={{ display: "flex", alignItems: "center", gap: "90px" }}>
+              {new Date(plant.lastWatered).toLocaleDateString()}
+              <button
+                className="action-button primary"
+                onClick={handleWatering}
+                disabled={isWatering}
+              >
+                {isWatering ? (
+                  <div className="spinner"></div>
+                ) : (
+                  <>
+                    <Droplet size={20} />
+                    Log Watering
+                  </>
+                )}
+              </button>
+            </p>
           </div>
         </div>
         <div className="info-row">
@@ -354,9 +379,19 @@ export default function PlantDetail() {
           <Camera size={20} />
           Add Photo
         </button>
-        <button className="action-button primary" onClick={handleWatering}>
-          <Droplet size={20} />
-          Log Watering
+        <button
+          className="action-button primary"
+          onClick={handleWatering}
+          disabled={isWatering}
+        >
+          {isWatering ? (
+            <div className="spinner"></div>
+          ) : (
+            <>
+              <Droplet size={20} />
+              Log Watering
+            </>
+          )}
         </button>
       </div>
 

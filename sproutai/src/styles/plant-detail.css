@@ -135,3 +135,24 @@
   gap: 16px;
   margin-top: 32px;
 }
+
+.spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block; /* Keep it inline with the text */
+  vertical-align: middle; /* Align it vertically within the button */
+  margin-right: 5px; /* Add a little space between the spinner and text */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
